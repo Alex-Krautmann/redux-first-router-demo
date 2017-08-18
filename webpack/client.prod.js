@@ -2,6 +2,7 @@ const path = require('path');
 const webpack = require('webpack');
 const ExtractCssChunks = require('extract-css-chunks-webpack-plugin');
 const StatsPlugin = require('stats-webpack-plugin');
+const vendorModules = require('./vendorModules');
 
 module.exports = {
     name: 'client',
@@ -49,6 +50,12 @@ module.exports = {
             names: ['bootstrap', 'vendor'], // 'bootstrap' needed to put webpack bootstrap code before chunks
             filename: '[name].[chunkhash].js',
             minChunks: m => /node_modules/.test(m.context),
+            // minChunks: mod => vendorModules.some(m => m.context && m.context.includes(mod)),
+            // minChunks: (m)=> {
+            //     if (m.context) {
+            //         console.log(module);
+            //     }
+            // },
         }),
         new webpack.DefinePlugin({
             'process.env': {

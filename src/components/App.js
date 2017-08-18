@@ -1,14 +1,17 @@
-import React from 'react'
+import React from 'react';
 
-import Sidebar from './Sidebar'
-import Switcher from './Switcher'
+import Sidebar from './Sidebar';
+import Switcher from './Switcher';
 
-import styles from '../css/App'
+import styles from '../css/App';
 
-export default () =>
-  (<div>
-    <div className={styles.app}>
-      <Sidebar />
-      <Switcher />
-    </div>
-  </div>)
+export default function App() {
+    return (
+        <div>
+            <div className={styles.app}>
+                <Sidebar />
+                <Switcher />
+            </div>
+        </div>
+    );
+}

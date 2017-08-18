@@ -69,7 +69,6 @@ module.exports = {
     'no-console': 1,
     'jsx-a11y/no-static-element-interactions': 1,
     'no-case-declarations': 1,
-    semi: [2, 'never'],
     'flowtype/semi': [2, 'never'],
     'jsx-quotes': [2, 'prefer-single'],
     'react/jsx-filename-extension': [2, { extensions: ['.jsx', '.js'] }],
@@ -91,16 +90,6 @@ module.exports = {
         devDependencies: true,
         optionalDependencies: true,
         peerDependencies: true
-      }
-    ],
-    'comma-dangle': [
-      2,
-      {
-        arrays: 'never',
-        objects: 'never',
-        imports: 'never',
-        exports: 'never',
-        functions: 'never'
       }
     ],
     'max-len': [
@@ -133,6 +122,9 @@ module.exports = {
         ]
       }
     ],
-    'linebreak-style': 0
+    'linebreak-style': 0,
+    // this option sets a specific tab width for your code
+    // http://eslint.org/docs/rules/indent
+    indent: [2, 4],
   }
 }

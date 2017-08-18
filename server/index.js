@@ -53,20 +53,23 @@ if (DEV) {
     app.use(webpackDevMiddleware(multiCompiler, { publicPath }));
     app.use(webpackHotMiddleware(clientCompiler));
     app.use(
-    // keeps serverRender updated with arg: { clientStats, outputPath }
+        // keeps serverRender updated with arg: { clientStats, outputPath }
         webpackHotServerMiddleware(multiCompiler, {
             serverRendererOptions: { outputPath },
         }),
     );
 }
 else {
-    const clientStats = require('../buildClient/stats.json'); // eslint-disable-line import/no-unresolved
-    const serverRender = require('../buildServer/main.js').default; // eslint-disable-line import/no-unresolved
+    // eslint-disable-next-line import/no-unresolved, global-require
+    const clientStats = require('../buildClient/stats.json');
+    // eslint-disable-next-line import/no-unresolved, global-require
+    const serverRender = require('../buildServer/main.js').default;
 
     app.use(publicPath, express.static(outputPath));
     app.use(serverRender({ clientStats, outputPath }));
 }
 
 app.listen(3000, () => {
+    // eslint-disable-next-line no-console
     console.log('Listening @ http://localhost:3000/');
 });

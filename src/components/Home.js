@@ -22,7 +22,9 @@ export default function Home() {
                 {"<Link to={['list', 'react-redux']}>REACT & REDUX</Link>"}
             </span>
 
-            <span style={{ color: 'rgb(200,200,200)', marginTop: 20 }}>ACTION:</span>
+            <span style={{ color: 'rgb(200,200,200)', marginTop: 20 }}>
+                ACTION:
+            </span>
             <span>
                 {"<Link to={{ type: 'LIST', payload: {slug: 'fp'} }}>FP</Link>"}
             </span>
@@ -37,7 +39,9 @@ export default function Home() {
             </pre>
 
             <div>
-                <span style={{ color: '#c5af8f', display: 'inline' }}>DIRECTIONS: </span>
+                <span style={{ color: '#c5af8f', display: 'inline' }}>
+                    DIRECTIONS:{' '}
+                </span>
                 <span className={styles.directions}>
                     {`inspect the sidebar tabs to see the top set are real <a> tag links and the
                     bottom set not, yet the address bar changes for both. The decision is up to you.
@@ -56,7 +60,10 @@ export default function Home() {
                 href='https://medium.com/faceyspacey/server-render-like-a-pro-w-redux-first-router-in-10-steps-b27dd93859de'
                 rel='noopener noreferrer'
             >
-                Server-Render Like A Pro in 10 Steps /w Redux-First Router 🚀
+                Server-Render Like A Pro in 10 Steps /w Redux-First Router{' '}
+                <span role='img' aria-label='rocket'>
+                    🚀
+                </span>
             </a>
 
             <br />
@@ -82,7 +89,8 @@ export default function Home() {
                 href='https://medium.com/faceyspacey/pre-release-redux-first-router-a-step-beyond-redux-little-router-cd2716576aea'
                 rel='noopener noreferrer'
             >
-                Pre Release: Redux-First Router — A Step Beyond Redux-Little-Router
+                Pre Release: Redux-First Router — A Step Beyond
+                Redux-Little-Router
             </a>
 
             <br />
@@ -95,8 +103,8 @@ export default function Home() {
                 href='https://medium.com/faceyspacey/redux-first-router-data-fetching-solving-the-80-use-case-for-async-middleware-14529606c262'
                 rel='noopener noreferrer'
             >
-                Redux-First Router data-fetching: solving the 80% use case for async
-                Middleware
+                Redux-First Router data-fetching: solving the 80% use case for
+                async Middleware
             </a>
         </div>
     );

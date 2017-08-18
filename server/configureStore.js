@@ -29,8 +29,9 @@ export default async (req, res) => {
 };
 
 const doesRedirect = ({ kind, pathname }, res) => {
-    if (kind === 'redirect') {
+    const isRedirect = kind === 'redirect';
+    if (isRedirect) {
         res.redirect(302, pathname);
-        return true;
     }
+    return isRedirect;
 };

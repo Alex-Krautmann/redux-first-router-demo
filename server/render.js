@@ -8,7 +8,10 @@ import App from '../src/components/App';
 
 // vendorJs is needed because autodll-webpack-plugin is used in development
 // This speeds up webpack rebuilds by holding the vendor chunk in memory and not watching modules specified in entry.vendor
-const vendorJs = (process.env.NODE_ENV === 'development') ? '<script type="text/javascript" src="/static/vendor.js"></script>' : '';
+const vendorJs =
+    process.env.NODE_ENV === 'development'
+        ? '<script type="text/javascript" src="/static/vendor.js"></script>'
+        : '';
 
 export default ({ clientStats }) => async (req, res) => {
     const store = await configureStore(req, res);
@@ -47,5 +50,5 @@ export default ({ clientStats }) => async (req, res) => {
 
 const createApp = (App, store) =>
     (<Provider store={store}>
-      <App />
+        <App />
     </Provider>);

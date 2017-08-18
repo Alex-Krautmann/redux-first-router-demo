@@ -6,25 +6,25 @@ import styles from '../css/List';
 
 const List = ({ videos }) =>
     (<div className={styles.list}>
-      {videos.map((video, key) => <Row {...video} key={key} />)}
+        {videos.map((video, key) => <Row {...video} key={key} />)}
     </div>);
 
 const Row = ({ slug, title, youtubeId, by, color }) =>
     (<Link
-      className={styles.row}
-      to={`/video/${slug}`}
-      style={{ backgroundImage: youtubeBackground(youtubeId) }}
+        className={styles.row}
+        to={`/video/${slug}`}
+        style={{ backgroundImage: youtubeBackground(youtubeId) }}
     >
-      <div className={styles.avatar} style={{ backgroundColor: color }}>
-          {initials(by)}
+        <div className={styles.avatar} style={{ backgroundColor: color }}>
+            {initials(by)}
         </div>
-      <span className={styles.title}>
-          {title}
+        <span className={styles.title}>
+            {title}
         </span>
 
-      <div className={styles.gradient} />
-      <span className={styles.by}>
-      by: {by}
+        <div className={styles.gradient} />
+        <span className={styles.by}>
+            by: {by}
         </span>
     </Link>);
 

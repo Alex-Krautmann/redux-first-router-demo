@@ -7,18 +7,22 @@ import styles from '../css/Video';
 const Player = ({ playing, youtubeId, slug, color }) =>
     !playing
         ? <div
-          className={styles.heroContainer}
-          style={{ backgroundImage: youtubeBackground(youtubeId) }}
+            className={styles.heroContainer}
+            style={{ backgroundImage: youtubeBackground(youtubeId) }}
         >
-          <Link to={`/video/${slug}/play`}>
-              <span className='ion-play' style={{ backgroundColor: color }} />
+            <Link to={`/video/${slug}/play`}>
+                <span
+                    className='ion-play'
+                    style={{ backgroundColor: color }}
+                />
             </Link>
         </div>
         : <iframe
-          className={styles.iframe}
-          frameBorder='0'
-          allowFullScreen
-          src={youtubeIframeSrc(youtubeId)}
+            className={styles.iframe}
+            frameBorder='0'
+            title='video-player'
+            allowFullScreen
+            src={youtubeIframeSrc(youtubeId)}
         />;
 
 const youtubeBackground = youtubeId =>

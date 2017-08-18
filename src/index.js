@@ -13,9 +13,9 @@ const render = App => {
     const root = document.getElementById('root');
 
     ReactDOM.render(
-      <AppContainer>
-          <Provider store={store}>
-              <App />
+        <AppContainer>
+            <Provider store={store}>
+                <App />
             </Provider>
         </AppContainer>,
         root,
@@ -26,6 +26,7 @@ render(App);
 
 if (module.hot && process.env.NODE_ENV === 'development') {
     module.hot.accept('./components/App', () => {
+        // eslint-disable-next-line global-require
         const App = require('./components/App').default;
         render(App);
     });

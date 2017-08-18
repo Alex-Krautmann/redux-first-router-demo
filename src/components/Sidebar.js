@@ -4,63 +4,76 @@ import { NavLink } from 'redux-first-router-link';
 import { goToPage } from '../actions';
 import styles from '../css/Sidebar';
 
-const Sidebar = ({ onClick, path }) =>
-    (<div className={styles.sidebar}>
-      <h2>SEO-FRIENDLY LINKS</h2>
+function Sidebar({ onClick, path }) {
+    return (
+        <div className={styles.sidebar}>
+            <h2>SEO-FRIENDLY LINKS</h2>
 
-      <NavLink activeClassName={styles.active} exact to='/'>
-      HOME
-        </NavLink>
+            <NavLink activeClassName={styles.active} exact to='/'>
+                HOME
+            </NavLink>
 
-      <NavLink activeClassName={styles.active} to='/list/db-graphql'>
-      DB & GRAPHQL
-        </NavLink>
+            <NavLink activeClassName={styles.active} to='/list/db-graphql'>
+                DB & GRAPHQL
+            </NavLink>
 
-      <NavLink activeClassName={styles.active} to={['list', 'react-redux']}>
-      REACT & REDUX
-        </NavLink>
+            <NavLink
+                activeClassName={styles.active}
+                to={['list', 'react-redux']}
+            >
+                REACT & REDUX
+            </NavLink>
 
-      <NavLink
-            activeClassName={styles.active}
-          to={{ type: 'LIST', payload: { category: 'fp' } }}
-        >
-      FP
-        </NavLink>
+            <NavLink
+                activeClassName={styles.active}
+                to={{ type: 'LIST', payload: { category: 'fp' } }}
+            >
+                FP
+            </NavLink>
 
-      <div style={{ height: 20 }} />
-      <h2>EVENT HANDLERS</h2>
+            <div style={{ height: 20 }} />
+            <h2>EVENT HANDLERS</h2>
 
-      <span className={active(path, '/')} onClick={() => onClick('HOME')}>
-      HOME
-        </span>
+            <a
+                href
+                className={active(path, '/')}
+                onClick={() => onClick('HOME')}
+            >
+                HOME
+            </a>
 
-      <span
-          className={active(path, '/list/db-graphql')}
-          onClick={() => onClick('LIST', 'db-graphql')}
-        >
-      DB & GRAPHQL
-        </span>
+            <a
+                href
+                className={active(path, '/list/db-graphql')}
+                onClick={() => onClick('LIST', 'db-graphql')}
+            >
+                DB & GRAPHQL
+            </a>
 
-      <span
-          className={active(path, '/list/react-redux')}
-          onClick={() => onClick('LIST', 'react-redux')}
-        >
-      REACT & REDUX
-        </span>
+            <a
+                href
+                className={active(path, '/list/react-redux')}
+                onClick={() => onClick('LIST', 'react-redux')}
+            >
+                REACT & REDUX
+            </a>
 
-      <span
-          className={active(path, '/list/fp')}
-          onClick={() => onClick('LIST', 'fp')}
-        >
-      FP
-        </span>
+            <a
+                href
+                className={active(path, '/list/fp')}
+                onClick={() => onClick('LIST', 'fp')}
+            >
+                FP
+            </a>
 
-      <div style={{ height: 14 }} />
+            <div style={{ height: 14 }} />
 
-      <NavLink to={{ type: 'ADMIN' }} activeClassName={styles.active}>
-      ADMIN
-        </NavLink>
-    </div>);
+            <NavLink to={{ type: 'ADMIN' }} activeClassName={styles.active}>
+                ADMIN
+            </NavLink>
+        </div>
+    );
+}
 
 const active = (currentPath, path) =>
     currentPath === path ? styles.active : '';

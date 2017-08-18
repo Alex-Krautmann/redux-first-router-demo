@@ -2,3 +2,5 @@ node_modules
 *.log
 buildClient
 buildServer
+.idea
+.DS_Store

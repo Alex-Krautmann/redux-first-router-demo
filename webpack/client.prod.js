@@ -2,7 +2,27 @@ const path = require('path')
 const webpack = require('webpack')
 const ExtractCssChunks = require('extract-css-chunks-webpack-plugin')
 const StatsPlugin = require('stats-webpack-plugin')
-const AutoDllPlugin = require('autodll-webpack-plugin')
+
+const uglifyOptions = {
+  compress: {
+    screw_ie8: true,
+    warnings: false
+  },
+  mangle: {
+    screw_ie8: true
+  },
+  output: {
+    screw_ie8: true,
+    comments: false
+  },
+  sourceMap: true
+}
+
+const definePluginOptions = {
+  'process.env': {
+    NODE_ENV: JSON.stringify('production')
+  }
+}
 
 module.exports = {
   name: 'client',
@@ -47,49 +67,35 @@ module.exports = {
     new StatsPlugin('stats.json'),
     new ExtractCssChunks(),
     new webpack.optimize.CommonsChunkPlugin({
-      names: ['bootstrap'], // needed to put webpack bootstrap code before chunks
+      names: ['bootstrap', 'vendor'], // needed to put webpack bootstrap code before chunks
       filename: '[name].[chunkhash].js',
-      minChunks: Infinity
+      minChunks: m => /node_modules/.test(m.context)
     }),
-
-    new webpack.DefinePlugin({
-      'process.env': {
-        NODE_ENV: JSON.stringify('production')
-      }
-    }),
-    new webpack.optimize.UglifyJsPlugin({
-      compress: {
-        screw_ie8: true,
-        warnings: false
-      },
-      mangle: {
-        screw_ie8: true
-      },
-      output: {
-        screw_ie8: true,
-        comments: false
-      },
-      sourceMap: true
-    }),
-    new webpack.HashedModuleIdsPlugin(), // not needed for strategy to work (just good practice)
-    new AutoDllPlugin({
-      context: path.join(__dirname, '..'),
-      filename: '[name].js',
-      entry: {
-        vendor: [
-          'react',
-          'react-dom',
-          'react-redux',
-          'redux',
-          'history/createBrowserHistory',
-          'transition-group',
-          'redux-first-router',
-          'redux-first-router-link',
-          'fetch-everywhere',
-          'babel-polyfill',
-          'redux-devtools-extension/logOnlyInProduction'
-        ]
-      }
-    })
+    new webpack.DefinePlugin(definePluginOptions),
+    new webpack.optimize.UglifyJsPlugin(uglifyOptions),
+    new webpack.HashedModuleIdsPlugin() // not needed for strategy to work (just good practice)
+    // new AutoDllPlugin({
+    //   context: path.join(__dirname, '..'),
+    //   filename: '[name].js',
+    //   entry: {
+    //     vendor: [
+    //       'react',
+    //       'react-dom',
+    //       'react-redux',
+    //       'redux',
+    //       'history/createBrowserHistory',
+    //       'transition-group',
+    //       'redux-first-router',
+    //       'redux-first-router-link',
+    //       'fetch-everywhere',
+    //       'babel-polyfill',
+    //       'redux-devtools-extension/logOnlyInProduction'
+    //     ]
+    //   },
+    //   plugins: [
+    //     new webpack.DefinePlugin(definePluginOptions),
+    //     new webpack.optimize.UglifyJsPlugin(uglifyOptions)
+    //   ]
+    // })
   ]
 }

@@ -6,7 +6,7 @@ import flushChunks from 'webpack-flush-chunks'
 import configureStore from './configureStore'
 import App from '../src/components/App'
 
-export default ({ clientStats }) => async (req, res, next) => {
+export default ({ clientStats }) => async (req, res) => {
   const store = await configureStore(req, res)
   if (!store) return // no store means redirect was already served
 
@@ -16,10 +16,12 @@ export default ({ clientStats }) => async (req, res, next) => {
   const chunkNames = flushChunkNames()
   const { js, styles, cssHash } = flushChunks(clientStats, { chunkNames })
 
+  /* eslint-disable no-console */
   console.log('REQUESTED PATH:', req.path)
   console.log('CHUNK NAMES', chunkNames)
+  /* eslint-enable no-console */
 
-  return res.send(
+  res.send(
     `<!doctype html>
       <html>
         <head>
@@ -32,7 +34,6 @@ export default ({ clientStats }) => async (req, res, next) => {
           <script>window.REDUX_STATE = ${stateJson}</script>
           <div id="root">${appString}</div>
           ${cssHash}
-          <script type='text/javascript' src='/static/vendor.js'></script>
           ${js}
         </body>
       </html>`
@@ -40,6 +41,6 @@ export default ({ clientStats }) => async (req, res, next) => {
 }
 
 const createApp = (App, store) =>
-  <Provider store={store}>
+  (<Provider store={store}>
     <App />
-  </Provider>
+  </Provider>)

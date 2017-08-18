@@ -1,14 +1,16 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import Link, { NavLink } from 'redux-first-router-link'
+import { NavLink } from 'redux-first-router-link'
 import { goToPage } from '../actions'
 import styles from '../css/Sidebar'
 
 const Sidebar = ({ onClick, path }) =>
-  <div className={styles.sidebar}>
+  (<div className={styles.sidebar}>
     <h2>SEO-FRIENDLY LINKS</h2>
 
-    <NavLink activeClassName={styles.active} exact to='/'>HOME</NavLink>
+    <NavLink activeClassName={styles.active} exact to='/'>
+      HOME
+    </NavLink>
 
     <NavLink activeClassName={styles.active} to='/list/db-graphql'>
       DB & GRAPHQL
@@ -58,7 +60,7 @@ const Sidebar = ({ onClick, path }) =>
     <NavLink to={{ type: 'ADMIN' }} activeClassName={styles.active}>
       ADMIN
     </NavLink>
-  </div>
+  </div>)
 
 const active = (currentPath, path) =>
   currentPath === path ? styles.active : ''

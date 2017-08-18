@@ -5,12 +5,12 @@ import Link from 'redux-first-router-link'
 import styles from '../css/List'
 
 const List = ({ videos }) =>
-  <div className={styles.list}>
+  (<div className={styles.list}>
     {videos.map((video, key) => <Row {...video} key={key} />)}
-  </div>
+  </div>)
 
 const Row = ({ slug, title, youtubeId, by, color }) =>
-  <Link
+  (<Link
     className={styles.row}
     to={`/video/${slug}`}
     style={{ backgroundImage: youtubeBackground(youtubeId) }}
@@ -18,11 +18,15 @@ const Row = ({ slug, title, youtubeId, by, color }) =>
     <div className={styles.avatar} style={{ backgroundColor: color }}>
       {initials(by)}
     </div>
-    <span className={styles.title}>{title}</span>
+    <span className={styles.title}>
+      {title}
+    </span>
 
     <div className={styles.gradient} />
-    <span className={styles.by}>by: {by}</span>
-  </Link>
+    <span className={styles.by}>
+      by: {by}
+    </span>
+  </Link>)
 
 const youtubeBackground = youtubeId =>
   `url(https://img.youtube.com/vi/${youtubeId}/maxresdefault.jpg)`

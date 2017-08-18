@@ -2,22 +2,24 @@ import React from 'react'
 import styles from '../css/Home'
 
 const Home = () =>
-  <div className={styles.home}>
+  (<div className={styles.home}>
     <h1>HOME</h1>
 
-    <h2>
-      NOTE: The top set of links are real links made like this:
-    </h2>
+    <h2>NOTE: The top set of links are real links made like this:</h2>
 
     <span style={{ color: 'rgb(200,200,200)', marginTop: 20 }}>
       HREF STRING:
     </span>
-    <span>{"<Link to='/list/db-graphql'>DB & GRAPHQL</Link>"}</span>
+    <span>
+      {"<Link to='/list/db-graphql'>DB & GRAPHQL</Link>"}
+    </span>
 
     <span style={{ color: 'rgb(200,200,200)', marginTop: 20 }}>
       PATH SEGMENTS:
     </span>
-    <span>{"<Link to={['list', 'react-redux']}>REACT & REDUX</Link>"}</span>
+    <span>
+      {"<Link to={['list', 'react-redux']}>REACT & REDUX</Link>"}
+    </span>
 
     <span style={{ color: 'rgb(200,200,200)', marginTop: 20 }}>ACTION:</span>
     <span>
@@ -97,6 +99,6 @@ onClick: () => dispatch({
       Redux-First Router data-fetching: solving the 80% use case for async
       Middleware
     </a>
-  </div>
+  </div>)
 
 export default Home

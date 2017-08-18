@@ -6,6 +6,10 @@ import flushChunks from 'webpack-flush-chunks';
 import configureStore from './configureStore';
 import App from '../src/components/App';
 
+// vendorJs is needed because autodll-webpack-plugin is used in development
+// This speeds up webpack rebuilds by holding the vendor chunk in memory and not watching the specified in entry.vendor
+const vendorJs = (process.env.NODE_ENV === 'development') ? '<script type="text/javascript" src="/static/vendor.js"></script>' : '';
+
 export default ({ clientStats }) => async (req, res) => {
     const store = await configureStore(req, res);
     if (!store) return; // no store means redirect was already served
@@ -15,7 +19,6 @@ export default ({ clientStats }) => async (req, res) => {
     const stateJson = JSON.stringify(store.getState());
     const chunkNames = flushChunkNames();
     const { js, styles, cssHash } = flushChunks(clientStats, { chunkNames });
-
 
     /* eslint-disable no-console */
     console.log('REQUESTED PATH:', req.path);
@@ -35,6 +38,7 @@ export default ({ clientStats }) => async (req, res) => {
           <script>window.REDUX_STATE = ${stateJson}</script>
           <div id="root">${appString}</div>
           ${cssHash}
+          <script type='text/javascript' src='/static/vendor.js'></script>
           ${js}
         </body>
       </html>`,

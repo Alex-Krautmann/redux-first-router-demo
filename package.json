@@ -17,7 +17,7 @@
     "precommit": "lint-staged --verbose",
     "cm": "git-cz",
     "lint": "eslint --fix src server webpack",
-    "format": "prettier --single-quote --semi=false --write '{src,server,webpack}/**/*.js' && npm run lint"
+    "format": "prettier --single-quote --tab-width 4 --trailing-comma all --write '{src,server,webpack}/**/*.js' && npm run lint"
   },
   "dependencies": {
     "babel-polyfill": "^6.23.0",

@@ -80,13 +80,13 @@ module.exports = {
                     'redux-devtools-extension/logOnlyInProduction',
                 ],
             },
-            plugins: [
-                new webpack.DefinePlugin({
-                    'process.env': {
-                        NODE_ENV: JSON.stringify('development'),
-                    },
-                }),
-            ],
+            // plugins: [
+            //     new webpack.DefinePlugin({
+            //         'process.env': {
+            //             NODE_ENV: JSON.stringify('development'),
+            //         },
+            //     }),
+            // ],
         }),
     ],
 };

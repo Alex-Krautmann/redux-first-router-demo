@@ -47,15 +47,15 @@ module.exports = {
         new StatsPlugin('stats.json'),
         new ExtractCssChunks(),
         new webpack.optimize.CommonsChunkPlugin({
-            names: ['bootstrap', 'vendor'], // 'bootstrap' needed to put webpack bootstrap code before chunks
+            // 'bootstrap' needed to put webpack bootstrap code before chunks
+            names: ['bootstrap', 'vendor'],
             filename: '[name].[chunkhash].js',
-            minChunks: m => /node_modules/.test(m.context),
-            // minChunks: mod => vendorModules.some(m => m.context && m.context.includes(mod)),
-            // minChunks: (m)=> {
-            //     if (m.context) {
-            //         console.log(module);
-            //     }
-            // },
+            // put vendor modules listed in ./vendorModules.js into vendor.js
+            minChunks: (webpackModule) => {
+                return vendorModules.some((vendorModule) => {
+                    return webpackModule.context && webpackModule.context.includes(vendorModule);
+                });
+            },
         }),
         new webpack.DefinePlugin({
             'process.env': {

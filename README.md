@@ -29,15 +29,15 @@ yarn start
 
 *client code:*
 - [***src/configureStore.js***](./src/configureStore.js) - *(nothing new here)*
-- [***src/components/Switcher.js***](./src/components/Switcher.js) - *(universal component concept)*
+- [***src/components/Switcher.jsx***](src/components/Switcher.jsx) - *(universal component concept)*
 - [***src/components/UniversalComponent.js***](./src/components/UniversalComponent.js) - ***(universal component concept continued...)***
-- [***src/components/Sidebar.js***](./src/components/Sidebar.js) - *(look at the different ways to link + dispatch URL-aware actions)*
-- [***src/reducers/index.js***](./src/reducers/index.js) -  *(observe simplicity of the `page` reducer. Also be cognizant of non-route action types)*
+- [***src/components/Sidebar.jsx***](src/components/Sidebar.jsx) - *(look at the different ways to link + dispatch URL-aware actions)*
+- [***src/reducers/index.jsx***](./src/reducers/index.js) -  *(observe simplicity of the `page` reducer. Also be cognizant of non-route action types)*
 
 
 *server code:*
-- [***server/index.js***](./server/index.js) - *(built-in ajax API + fake cookie handling)*
-- [***server/render.js***](./server/render.js) - *(super simple thanks to [webpack-flush-chunks](https://github.com/faceyspacey/webpack-flush-chunks))*
+- [***server/index.jsx***](./server/index.js) - *(built-in ajax API + fake cookie handling)*
+- [***server/render.jsx***](server/render.jsx) - *(super simple thanks to [webpack-flush-chunks](https://github.com/faceyspacey/webpack-flush-chunks))*
 - [***server/configureStore.js***](./server/configureStore.js) - ***(this is the gem of the repo -- observe how to filter authentication)***
 
 ## Notes

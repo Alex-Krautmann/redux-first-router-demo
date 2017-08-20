@@ -23,4 +23,4 @@ export default {
 };
 
 const alertMessage =
-    "NICE, You're adventurous! Try changing the jwToken cookie from 'fake' to 'real' in server/index.js (and manually refresh) to access the Admin Panel. Then 'onBeforeChange' will let you in.";
+    "NICE, You're adventurous! Try changing the jwToken cookie from 'fake' to 'real' in server/index.jsx (and manually refresh) to access the Admin Panel. Then 'onBeforeChange' will let you in.";

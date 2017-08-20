@@ -24,14 +24,14 @@ export default {
     },
     VIDEO: {
         path: '/video/:slug',
-        thunk: async (dispatch, getState) => {
+        thunk: async (/* dispatch, getState */) => {
             // TASK FOR YOU. YES, YOU!
             //
             // visit a VIDEO page in the app, then refresh the page, then make
             // this work when visited directly by copying the LIST route above and
             // using fetchData(`/api/video/${slug}`) and by dispatching
             // the the corresponding action type which I'll leave up to you to find
-            // in ../reducers/index.js :)
+            // in ../reducers/index.jsx :)
         },
     },
     PLAY: {
@@ -48,7 +48,7 @@ export default {
     LOGIN: '/login',
     ADMIN: {
         path: '/admin', // TRY: visit this path or dispatch ADMIN
-        role: 'admin', // + change jwToken to 'real' in server/index.js
+        role: 'admin', // + change jwToken to 'real' in server/index.jsx
     },
 };
 

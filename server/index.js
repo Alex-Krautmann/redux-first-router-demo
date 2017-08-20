@@ -1,5 +1,6 @@
 import 'babel-polyfill';
 import express from 'express';
+import compression from 'compression';
 import cookieParser from 'cookie-parser';
 import webpack from 'webpack';
 import webpackDevMiddleware from 'webpack-dev-middleware';
@@ -58,12 +59,15 @@ if (DEV) {
             serverRendererOptions: { outputPath },
         }),
     );
-}
-else {
+} else {
     // eslint-disable-next-line import/no-unresolved, global-require
     const clientStats = require('../buildClient/stats.json');
     // eslint-disable-next-line import/no-unresolved, global-require
     const serverRender = require('../buildServer/main.js').default;
+
+    // gzip compression is done here for speed audits
+    // this would likely be done using a reverse-proxy such as nginx in production
+    app.use(compression());
 
     app.use(publicPath, express.static(outputPath));
     app.use(serverRender({ clientStats, outputPath }));

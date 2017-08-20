@@ -3,6 +3,7 @@ const webpack = require('webpack');
 const ExtractCssChunks = require('extract-css-chunks-webpack-plugin');
 const StatsPlugin = require('stats-webpack-plugin');
 const vendorModules = require('./vendorModules');
+const BabiliMinifyPlugin = require('babel-minify-webpack-plugin');
 
 module.exports = {
     name: 'client',
@@ -11,7 +12,7 @@ module.exports = {
     entry: [
         'babel-polyfill',
         'fetch-everywhere',
-        path.resolve(__dirname, '../src/index.js'),
+        path.resolve(__dirname, '../src/index.jsx'),
     ],
     output: {
         filename: '[name].[chunkhash].js',
@@ -22,7 +23,7 @@ module.exports = {
     module: {
         rules: [
             {
-                test: /\.js$/,
+                test: /\.(js|jsx)$/,
                 exclude: /node_modules/,
                 use: 'babel-loader',
             },
@@ -41,7 +42,7 @@ module.exports = {
         ],
     },
     resolve: {
-        extensions: ['.js', '.css'],
+        extensions: ['.js', '.jsx', '.css'],
     },
     plugins: [
         new StatsPlugin('stats.json'),
@@ -51,31 +52,20 @@ module.exports = {
             names: ['bootstrap', 'vendor'],
             filename: '[name].[chunkhash].js',
             // put vendor modules listed in ./vendorModules.js into vendor.js
-            minChunks: (webpackModule) => {
-                return vendorModules.some((vendorModule) => {
-                    return webpackModule.context && webpackModule.context.includes(vendorModule);
-                });
-            },
+            minChunks: wpModule =>
+                vendorModules.some(
+                    vendorModule =>
+                        wpModule.context &&
+                        wpModule.context.includes(vendorModule),
+                ),
         }),
         new webpack.DefinePlugin({
             'process.env': {
                 NODE_ENV: JSON.stringify('production'),
             },
         }),
-        new webpack.optimize.UglifyJsPlugin({
-            compress: {
-                screw_ie8: true,
-                warnings: false,
-            },
-            mangle: {
-                screw_ie8: true,
-            },
-            output: {
-                screw_ie8: true,
-                comments: false,
-            },
-            sourceMap: true,
-        }),
-        new webpack.HashedModuleIdsPlugin(), // not needed for strategy to work (just good practice)
+        new BabiliMinifyPlugin(),
+        // HashedModuleIdsPlugin not needed for strategy to work (just good practice)
+        new webpack.HashedModuleIdsPlugin(),
     ],
 };

@@ -16,16 +16,16 @@ const externals = fs
                 x,
             ),
     )
-    .reduce((externals, mod) => {
-        externals[mod] = `commonjs ${mod}`;
-        return externals;
+    .reduce((externalsAcc, mod) => {
+        externalsAcc[mod] = `commonjs ${mod}`;
+        return externalsAcc;
     }, {});
 
 module.exports = {
     name: 'server',
     target: 'node',
     devtool: 'source-map',
-    entry: ['fetch-everywhere', res('../server/render.js')],
+    entry: ['fetch-everywhere', res('../server/render.jsx')],
     externals,
     output: {
         path: res('../buildServer'),
@@ -35,7 +35,7 @@ module.exports = {
     module: {
         rules: [
             {
-                test: /\.js$/,
+                test: /\.(js|jsx)$/,
                 exclude: /node_modules/,
                 use: 'babel-loader',
             },
@@ -53,7 +53,7 @@ module.exports = {
         ],
     },
     resolve: {
-        extensions: ['.js', '.css'],
+        extensions: ['.js', '.jsx', '.css'],
     },
     plugins: [
         new webpack.optimize.LimitChunkCountPlugin({

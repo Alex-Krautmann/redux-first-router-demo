@@ -19,7 +19,7 @@ function Switcher({ page, direction, isLoading }) {
         <TransitionGroup
             className={`${styles.switcher} ${direction}`}
             duration={500}
-            prefix='fade'
+            prefix="fade"
         >
             <Transition key={page}>
                 <UniversalComponent page={page} isLoading={isLoading} />

@@ -12,15 +12,15 @@ const Player = ({ playing, youtubeId, slug, color }) =>
         >
             <Link to={`/video/${slug}/play`}>
                 <span
-                    className='ion-play'
+                    className="ion-play"
                     style={{ backgroundColor: color }}
                 />
             </Link>
         </div>
         : <iframe
             className={styles.iframe}
-            frameBorder='0'
-            title='video-player'
+            frameBorder="0"
+            title="video-player"
             allowFullScreen
             src={youtubeIframeSrc(youtubeId)}
         />;

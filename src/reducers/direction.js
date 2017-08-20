@@ -11,23 +11,17 @@ export default (state = 'next', action = {}) => {
     }
     if (type === 'HOME') {
         return 'back';
-    }
-    else if (type === 'LIST' && prevType === 'HOME') {
+    } else if (type === 'LIST' && prevType === 'HOME') {
         return 'next';
-    }
-    else if (type === 'LIST' && prevType === 'VIDEO') {
+    } else if (type === 'LIST' && prevType === 'VIDEO') {
         return 'back';
-    }
-    else if (type === 'LIST' && prevType === 'PLAY') {
+    } else if (type === 'LIST' && prevType === 'PLAY') {
         return 'back';
-    }
-    else if (type === 'VIDEO' && prevType === 'LIST') {
+    } else if (type === 'VIDEO' && prevType === 'LIST') {
         return 'next';
-    }
-    else if (type === 'LOGIN') {
+    } else if (type === 'LOGIN') {
         return 'back';
-    }
-    else if (type === 'ADMIN') {
+    } else if (type === 'ADMIN') {
         return 'next';
     }
 
@@ -35,4 +29,4 @@ export default (state = 'next', action = {}) => {
 };
 
 // this is an example of some fun stuff you can do easily trigger animations
-// from state. Look into <TransitionGroup /> within components/Switcher.js
+// from state. Look into <TransitionGroup /> within components/Switcher.jsx

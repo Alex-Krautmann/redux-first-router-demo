@@ -23,19 +23,18 @@ export default ({ clientStats }) => async (req, res) => {
     const chunkNames = flushChunkNames();
     const { js, styles, cssHash } = flushChunks(clientStats, { chunkNames });
 
-    /* eslint-disable no-console */
+    // eslint-disable-next-line no-console
     console.log('REQUESTED PATH:', req.path);
+    // eslint-disable-next-line no-console
     console.log('CHUNK NAMES', chunkNames);
-    /* eslint-enable no-console */
 
     res.send(
         `<!doctype html>
-      <html>
+      <html lang="en-US">
         <head>
           <meta charset="utf-8">
           <title>redux-first-router-demo</title>
           ${styles}
-          <link rel="stylesheet prefetch" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
         </head>
         <body>
           <script>window.REDUX_STATE = ${stateJson}</script>

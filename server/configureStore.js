@@ -3,7 +3,7 @@ import { NOT_FOUND } from 'redux-first-router';
 import configureStore from '../src/configureStore';
 
 export default async (req, res) => {
-    const jwToken = req.cookies.jwToken; // see server/index.js to change jwToken
+    const jwToken = req.cookies.jwToken; // see server/index.jsx to change jwToken
     const preLoadedState = { jwToken }; // onBeforeChange will authenticate using this
 
     const history = createHistory({ initialEntries: [req.path] });

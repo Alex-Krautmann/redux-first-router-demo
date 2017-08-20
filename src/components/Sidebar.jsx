@@ -9,11 +9,11 @@ function Sidebar({ onClick, path }) {
         <div className={styles.sidebar}>
             <h2>SEO-FRIENDLY LINKS</h2>
 
-            <NavLink activeClassName={styles.active} exact to='/'>
+            <NavLink activeClassName={styles.active} exact to="/">
                 HOME
             </NavLink>
 
-            <NavLink activeClassName={styles.active} to='/list/db-graphql'>
+            <NavLink activeClassName={styles.active} to="/list/db-graphql">
                 DB & GRAPHQL
             </NavLink>
 

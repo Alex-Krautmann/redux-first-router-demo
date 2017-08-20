@@ -9,7 +9,7 @@ import configureStore from './configureStore';
 const history = createHistory();
 const { store } = configureStore(history, window.REDUX_STATE);
 
-const render = App => {
+const render = (App) => {
     const root = document.getElementById('root');
 
     ReactDOM.render(

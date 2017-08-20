@@ -22,12 +22,12 @@ export default (history, preLoadedState) => {
     if (module.hot && process.env.NODE_ENV === 'development') {
         module.hot.accept('./reducers/index', () => {
             // eslint-disable-next-line global-require
-            const reducers = require('./reducers/index');
-            const rootReducer = combineReducers({
-                ...reducers,
+            const updatedReducers = require('./reducers/index');
+            const updatedRootReducer = combineReducers({
+                ...updatedReducers,
                 location: reducer,
             });
-            store.replaceReducer(rootReducer);
+            store.replaceReducer(updatedRootReducer);
         });
     }
 

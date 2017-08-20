@@ -3,14 +3,14 @@ export const findVideos = async (category, jwToken) => {
     if (!jwToken) return []; // in a real app, you'd authenticate
 
     switch (category) {
-    case 'fp':
-        return fpVideos;
-    case 'react-redux':
-        return reactReduxVideos;
-    case 'db-graphql':
-        return dbGraphqlVideos;
-    default:
-        return [];
+        case 'fp':
+            return fpVideos;
+        case 'react-redux':
+            return reactReduxVideos;
+        case 'db-graphql':
+            return dbGraphqlVideos;
+        default:
+            return [];
     }
 };
 

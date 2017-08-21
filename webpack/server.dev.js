@@ -1,6 +1,8 @@
 const fs = require('fs');
 const path = require('path');
 const webpack = require('webpack');
+const autoprefixer = require('autoprefixer');
+const postCssFlexbugsFixesPlugin = require('postcss-flexbugs-fixes');
 
 const res = p => path.resolve(__dirname, p);
 
@@ -42,15 +44,40 @@ module.exports = {
                 use: 'babel-loader',
             },
             {
-                test: /\.css$/,
+                test: /\.scss$/,
                 exclude: /node_modules/,
-                use: {
-                    loader: 'css-loader/locals',
-                    options: {
-                        modules: true,
-                        localIdentName: '[name]__[local]--[hash:base64:5]',
+                use: [
+                    {
+                        loader: 'css-loader/locals',
+                        options: {
+                            modules: true,
+                            localIdentName: '[name]__[local]--[hash:base64:5]',
+                        },
                     },
-                },
+                    {
+                        loader: 'postcss-loader',
+                        options: {
+                            // Necessary for external CSS imports to work
+                            // https://github.com/facebookincubator/create-react-app/issues/2677
+                            ident: 'postcss',
+                            plugins: () => [
+                                postCssFlexbugsFixesPlugin,
+                                autoprefixer({
+                                    browsers: [
+                                        '>1%',
+                                        'last 4 versions',
+                                        'Firefox ESR',
+                                        'not ie < 9', // React doesn't support IE8 anyway
+                                    ],
+                                    flexbox: 'no-2009',
+                                }),
+                            ],
+                        },
+                    },
+                    {
+                        loader: 'sass-loader',
+                    },
+                ],
             },
         ],
     },
@@ -61,7 +88,6 @@ module.exports = {
         new webpack.optimize.LimitChunkCountPlugin({
             maxChunks: 1,
         }),
-
         new webpack.DefinePlugin({
             'process.env': {
                 NODE_ENV: JSON.stringify('development'),

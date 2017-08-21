@@ -2,10 +2,11 @@ import React from 'react';
 import { connect } from 'react-redux';
 import Link from 'redux-first-router-link';
 
-import styles from '../css/List';
+import styles from '../css/List.scss';
+import switcherStyles from '../css/Switcher.scss';
 
 const List = ({ videos }) =>
-    (<div className={styles.list}>
+    (<div className={`${styles.list} ${switcherStyles.list}`}>
         {videos.map((video, key) => <Row {...video} key={key} />)}
     </div>);
 

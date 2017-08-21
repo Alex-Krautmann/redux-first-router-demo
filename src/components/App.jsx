@@ -3,7 +3,7 @@ import React from 'react';
 import Sidebar from './Sidebar';
 import Switcher from './Switcher';
 
-import styles from '../css/App';
+import styles from '../css/App.scss';
 
 export default function App() {
     return (

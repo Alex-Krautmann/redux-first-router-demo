@@ -1,6 +1,6 @@
 import React from 'react';
-import { notFound } from '../css/Switcher';
+import styles from '../css/Switcher.scss';
 
 export default function NotFound() {
-    return <div className={notFound}>PAGE NOT FOUND - 404</div>;
+    return <div className={styles.text}>PAGE NOT FOUND - 404</div>;
 }

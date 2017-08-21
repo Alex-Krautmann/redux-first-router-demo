@@ -2,8 +2,11 @@ const path = require('path');
 const webpack = require('webpack');
 const ExtractCssChunks = require('extract-css-chunks-webpack-plugin');
 const StatsPlugin = require('stats-webpack-plugin');
+const autoprefixer = require('autoprefixer');
+const postCssFlexbugsFixesPlugin = require('postcss-flexbugs-fixes');
 const vendorModules = require('./vendorModules');
 const BabiliMinifyPlugin = require('babel-minify-webpack-plugin');
+const WebpackMd5Hash = require('webpack-md5-hash');
 
 module.exports = {
     name: 'client',
@@ -28,15 +31,40 @@ module.exports = {
                 use: 'babel-loader',
             },
             {
-                test: /\.css$/,
+                test: /\.scss$/,
                 use: ExtractCssChunks.extract({
-                    use: {
-                        loader: 'css-loader',
-                        options: {
-                            modules: true,
-                            localIdentName: '[name]__[local]--[hash:base64:5]',
+                    use: [
+                        {
+                            loader: 'css-loader',
+                            options: {
+                                modules: true,
+                                localIdentName: '[name]__[local]--[hash:base64:5]',
+                            },
                         },
-                    },
+                        {
+                            loader: 'postcss-loader',
+                            options: {
+                                // Necessary for external CSS imports to work
+                                // https://github.com/facebookincubator/create-react-app/issues/2677
+                                ident: 'postcss',
+                                plugins: () => [
+                                    postCssFlexbugsFixesPlugin,
+                                    autoprefixer({
+                                        browsers: [
+                                            '>1%',
+                                            'last 4 versions',
+                                            'Firefox ESR',
+                                            'not ie < 9', // React doesn't support IE8 anyway
+                                        ],
+                                        flexbox: 'no-2009',
+                                    }),
+                                ],
+                            },
+                        },
+                        {
+                            loader: 'sass-loader',
+                        },
+                    ],
                 }),
             },
         ],
@@ -45,6 +73,10 @@ module.exports = {
         extensions: ['.js', '.jsx', '.css'],
     },
     plugins: [
+        // Need this plugin for deterministic hashing allows for vendor.js caching
+        // until this issue is resolved: https://github.com/webpack/webpack/issues/1315
+        // for more info: https://webpack.js.org/how-to/cache/
+        new WebpackMd5Hash(),
         new StatsPlugin('stats.json'),
         new ExtractCssChunks(),
         new webpack.optimize.CommonsChunkPlugin({
@@ -66,6 +98,6 @@ module.exports = {
         }),
         new BabiliMinifyPlugin(),
         // HashedModuleIdsPlugin not needed for strategy to work (just good practice)
-        new webpack.HashedModuleIdsPlugin(),
+        // new webpack.HashedModuleIdsPlugin(),
     ],
 };

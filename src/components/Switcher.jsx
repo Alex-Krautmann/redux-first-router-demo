@@ -6,7 +6,7 @@ import universal from 'react-universal-component';
 import Loading from './Loading';
 import Err from './Error';
 import isLoading from '../selectors/isLoading';
-import styles from '../css/Switcher';
+import styles from '../css/Switcher.scss';
 
 const UniversalComponent = universal(({ page }) => import(`./${page}`), {
     minDelay: 500,

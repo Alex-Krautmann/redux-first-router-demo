@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import Link from 'redux-first-router-link';
 
-import styles from '../css/Video';
+import styles from '../css/Video.scss';
 
 const Player = ({ playing, youtubeId, slug, color }) =>
     !playing

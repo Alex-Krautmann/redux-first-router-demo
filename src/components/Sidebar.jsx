@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { NavLink } from 'redux-first-router-link';
 import { goToPage } from '../actions';
-import styles from '../css/Sidebar';
+import styles from '../css/Sidebar.scss';
 
 function Sidebar({ onClick, path }) {
     return (

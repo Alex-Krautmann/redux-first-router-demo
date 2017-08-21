@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import Player from './Player';
-import styles from '../css/Video';
+import styles from '../css/Video.scss';
 
 const Video = ({ slug, title, youtubeId, category, by, color, tip }) =>
     (<div className={styles.video}>

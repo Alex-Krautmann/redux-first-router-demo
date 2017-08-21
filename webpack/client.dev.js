@@ -3,6 +3,8 @@ const webpack = require('webpack');
 const WriteFilePlugin = require('write-file-webpack-plugin');
 const AutoDllPlugin = require('autodll-webpack-plugin');
 const ExtractCssChunks = require('extract-css-chunks-webpack-plugin');
+const autoprefixer = require('autoprefixer');
+const postCssFlexbugsFixesPlugin = require('postcss-flexbugs-fixes');
 const vendorModules = require('./vendorModules');
 
 module.exports = {
@@ -31,15 +33,40 @@ module.exports = {
                 use: 'babel-loader',
             },
             {
-                test: /\.css$/,
+                test: /\.scss$/,
                 use: ExtractCssChunks.extract({
-                    use: {
-                        loader: 'css-loader',
-                        options: {
-                            modules: true,
-                            localIdentName: '[name]__[local]--[hash:base64:5]',
+                    use: [
+                        {
+                            loader: 'css-loader',
+                            options: {
+                                modules: true,
+                                localIdentName: '[name]__[local]--[hash:base64:5]',
+                            },
                         },
-                    },
+                        {
+                            loader: 'postcss-loader',
+                            options: {
+                                // Necessary for external CSS imports to work
+                                // https://github.com/facebookincubator/create-react-app/issues/2677
+                                ident: 'postcss',
+                                plugins: () => [
+                                    postCssFlexbugsFixesPlugin,
+                                    autoprefixer({
+                                        browsers: [
+                                            '>1%',
+                                            'last 4 versions',
+                                            'Firefox ESR',
+                                            'not ie < 9', // React doesn't support IE8 anyway
+                                        ],
+                                        flexbox: 'no-2009',
+                                    }),
+                                ],
+                            },
+                        },
+                        {
+                            loader: 'sass-loader',
+                        },
+                    ],
                 }),
             },
         ],

@@ -16,7 +16,7 @@
     "clean": "rimraf buildClient buildServer",
     "precommit": "lint-staged --verbose",
     "cm": "git-cz",
-    "lint": "eslint --fix src server webpack",
+    "lint": "eslint --ext .jsx --ext .js --fix src server webpack",
     "format": "prettier --single-quote --tab-width 4 --trailing-comma all --write '{src,server,webpack}/**/*.js' && npm run lint"
   },
   "dependencies": {
@@ -40,6 +40,7 @@
   },
   "devDependencies": {
     "autodll-webpack-plugin": "^0.2.1",
+    "autoprefixer": "^7.1.2",
     "babel-cli": "^6.24.0",
     "babel-core": "^6.24.0",
     "babel-eslint": "^7.2.3",
@@ -65,9 +66,13 @@
     "husky": "^0.14.3",
     "jest": "^20.0.4",
     "lint-staged": "^4.0.3",
+    "node-sass": "^4.5.3",
+    "postcss-flexbugs-fixes": "^3.2.0",
+    "postcss-loader": "^2.0.6",
     "prettier": "^1.4.4",
     "react-hot-loader": "next",
     "rimraf": "^2.6.1",
+    "sass-loader": "^6.0.6",
     "stats-webpack-plugin": "^0.6.1",
     "travis-github-status": "^1.4.0",
     "webpack": "^3.5.4",
@@ -82,7 +87,7 @@
     }
   },
   "lint-staged": {
-    "*.js": [
+    "*.(js|jsx)": [
       "format",
       "git add"
     ]

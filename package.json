@@ -36,7 +36,8 @@
     "redux-first-router-link": "^1.1.4",
     "reselect": "^3.0.1",
     "transition-group": "^0.0.1",
-    "webpack-flush-chunks": "^1.1.22"
+    "webpack-flush-chunks": "^1.1.22",
+    "webpack-md5-hash": "0.0.5"
   },
   "devDependencies": {
     "autodll-webpack-plugin": "^0.2.1",

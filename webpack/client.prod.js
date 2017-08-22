@@ -12,11 +12,7 @@ module.exports = {
     name: 'client',
     target: 'web',
     devtool: 'source-map',
-    entry: [
-        'babel-polyfill',
-        'fetch-everywhere',
-        path.resolve(__dirname, '../src/index.jsx'),
-    ],
+    entry: ['babel-polyfill', 'fetch-everywhere', path.resolve(__dirname, '../src/index.jsx')],
     output: {
         filename: '[name].[chunkhash].js',
         chunkFilename: '[name].[chunkhash].js',
@@ -86,9 +82,7 @@ module.exports = {
             // put vendor modules listed in ./vendorModules.js into vendor.js
             minChunks: wpModule =>
                 vendorModules.some(
-                    vendorModule =>
-                        wpModule.context &&
-                        wpModule.context.includes(vendorModule),
+                    vendorModule => wpModule.context && wpModule.context.includes(vendorModule),
                 ),
         }),
         new webpack.DefinePlugin({
@@ -97,7 +91,5 @@ module.exports = {
             },
         }),
         new BabiliMinifyPlugin(),
-        // HashedModuleIdsPlugin not needed for strategy to work (just good practice)
-        // new webpack.HashedModuleIdsPlugin(),
     ],
 };

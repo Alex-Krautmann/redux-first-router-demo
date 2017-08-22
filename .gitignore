@@ -4,3 +4,4 @@ buildClient
 buildServer
 .idea
 .DS_Store
+*.iml

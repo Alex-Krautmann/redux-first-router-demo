@@ -1,9 +1,9 @@
 import React from 'react';
-import { notFound } from '../css/Switcher.scss';
+import styles from '../css/Switcher.scss';
 
 export default function Error(error) {
     return (
-        <div className={notFound}>
+        <div className={styles.text}>
             ERROR: {error.message}
         </div>
     );

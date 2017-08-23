@@ -4,7 +4,7 @@ import { Provider } from 'react-redux';
 import createHistory from 'history/createBrowserHistory';
 import AppContainer from 'react-hot-loader/lib/AppContainer';
 import App from './components/App';
-import configureStore from './configureStore';
+import configureStore from './state/configureStore';
 
 const history = createHistory();
 const { store } = configureStore(history, window.REDUX_STATE);

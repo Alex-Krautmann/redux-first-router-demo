@@ -1,0 +1,10 @@
+export { default as page } from './page/reducer';
+export { default as slug } from './slug/reducer';
+export { default as category } from './category/reducer';
+export { default as direction } from './direction/reducer';
+export { default as videosHash } from './videosHash/reducer';
+export { default as videosByCategory } from './videosByCategory/reducer';
+export { default as playing } from './playing/reducer';
+export { default as user } from './user/reducer';
+export { default as title } from './title/reducer';
+export { default as jwToken } from './jwToken/reducer';

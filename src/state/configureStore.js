@@ -3,7 +3,7 @@ import { composeWithDevTools } from 'redux-devtools-extension/logOnlyInProductio
 import { connectRoutes } from 'redux-first-router';
 
 import routesMap from './routesMap';
-import options from './options';
+import routerOptions from './routerOptions';
 import * as reducers from './reducers';
 import * as actionCreators from './actions';
 
@@ -11,7 +11,7 @@ export default (history, preLoadedState) => {
     const { reducer, middleware, enhancer, thunk } = connectRoutes(
         history,
         routesMap,
-        options,
+        routerOptions,
     );
 
     const rootReducer = combineReducers({ ...reducers, location: reducer });
@@ -20,9 +20,9 @@ export default (history, preLoadedState) => {
     const store = createStore(rootReducer, preLoadedState, enhancers);
 
     if (module.hot && process.env.NODE_ENV === 'development') {
-        module.hot.accept('./reducers/index', () => {
+        module.hot.accept('./reducers', () => {
             // eslint-disable-next-line global-require
-            const updatedReducers = require('./reducers/index');
+            const updatedReducers = require('./reducers');
             const updatedRootReducer = combineReducers({
                 ...updatedReducers,
                 location: reducer,

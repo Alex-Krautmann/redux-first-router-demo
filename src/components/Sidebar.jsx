@@ -35,7 +35,7 @@ function Sidebar({ onClick, path }) {
             <h2>EVENT HANDLERS</h2>
 
             <a
-                href
+                href=""
                 className={active(path, '/')}
                 onClick={() => onClick('HOME')}
             >
@@ -43,7 +43,7 @@ function Sidebar({ onClick, path }) {
             </a>
 
             <a
-                href
+                href=""
                 className={active(path, '/list/db-graphql')}
                 onClick={() => onClick('LIST', 'db-graphql')}
             >
@@ -51,7 +51,7 @@ function Sidebar({ onClick, path }) {
             </a>
 
             <a
-                href
+                href=""
                 className={active(path, '/list/react-redux')}
                 onClick={() => onClick('LIST', 'react-redux')}
             >
@@ -59,7 +59,7 @@ function Sidebar({ onClick, path }) {
             </a>
 
             <a
-                href
+                href=""
                 className={active(path, '/list/fp')}
                 onClick={() => onClick('LIST', 'fp')}
             >
@@ -75,8 +75,7 @@ function Sidebar({ onClick, path }) {
     );
 }
 
-const active = (currentPath, path) =>
-    currentPath === path ? styles.active : '';
+const active = (currentPath, path) => currentPath === path ? styles.active : '';
 
 const mapDispatch = { onClick: goToPage };
 const mapState = ({ location }) => ({ path: location.pathname });

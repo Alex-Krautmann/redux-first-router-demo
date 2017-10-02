@@ -55,8 +55,8 @@ module.exports = {
             peerDependencies: true
         }],
         'max-len': ['error', {
-            code: 100,
-            tabWidth: 2,
+            code: 120,
+            tabWidth: 4,
             ignoreUrls: true,
             ignoreComments: true,
             ignoreRegExpLiterals: true,

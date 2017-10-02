@@ -9,25 +9,24 @@ import configureStore from './configureStore';
 const history = createHistory();
 const { store } = configureStore(history, window.REDUX_STATE);
 
-const render = (App) => {
+function render(AppComponent) {
     const root = document.getElementById('root');
 
-    ReactDOM.render(
+    ReactDOM.hydrate(
         <AppContainer>
             <Provider store={store}>
-                <App />
+                <AppComponent />
             </Provider>
         </AppContainer>,
         root,
     );
-};
+}
 
 render(App);
 
 if (module.hot && process.env.NODE_ENV === 'development') {
     module.hot.accept('./components/App', () => {
         // eslint-disable-next-line global-require
-        const App = require('./components/App').default;
-        render(App);
+        render(require('./components/App').default);
     });
 }

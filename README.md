@@ -24,11 +24,11 @@ yarn start
 ## Files You Should Look At:
 
 *universal code:*
-- [***src/routesMap.js***](./src/routesMap.js) - *(observe thunks and `onBeforeChange`)*
-- [***src/utils.js***](./src/utils.js) - *(check `isAllowed` function)*
+- [***src/routeMap.js***](sauce/app/routeMap.js) - *(observe thunks and `onBeforeChange`)*
+- [***src/index.js***](sauce/services/index.js) - *(check `isAllowed` function)*
 
 *client code:*
-- [***src/configureStore.js***](./src/configureStore.js) - *(nothing new here)*
+- [***src/configureStore.js***](sauce/app/configureStore.js) - *(nothing new here)*
 - [***src/components/Switcher.jsx***](src/components/Switcher.jsx) - *(universal component concept)*
 - [***src/components/UniversalComponent.js***](./src/components/UniversalComponent.js) - ***(universal component concept continued...)***
 - [***src/components/Sidebar.jsx***](src/components/Sidebar.jsx) - *(look at the different ways to link + dispatch URL-aware actions)*
@@ -36,9 +36,9 @@ yarn start
 
 
 *server code:*
-- [***server/index.jsx***](./server/index.js) - *(built-in ajax API + fake cookie handling)*
-- [***server/render.jsx***](server/render.jsx) - *(super simple thanks to [webpack-flush-chunks](https://github.com/faceyspacey/webpack-flush-chunks))*
-- [***server/configureStore.js***](./server/configureStore.js) - ***(this is the gem of the repo -- observe how to filter authentication)***
+- [***server/index.jsx***](sauce/index.js) - *(built-in ajax API + fake cookie handling)*
+- [***server/render.jsx***](sauce/universal/render.jsx) - *(super simple thanks to [webpack-flush-chunks](https://github.com/faceyspacey/webpack-flush-chunks))*
+- [***server/configureStore.js***](sauce/universal/configureStore.js) - ***(this is the gem of the repo -- observe how to filter authentication)***
 
 ## Notes
 I comment throughout the code various things you can try. Look out for comments starting with *"TRY:"* and *"TASK:"*. 
@@ -47,7 +47,7 @@ For example, there are simple values like the `jwToken` you can toggle to get ac
 
 In general, this Demo is all about SSR. It shows how to use the `onBeforeChange` to properly authenticate user's and routes using *JSON Web Tokens*. And of course data-fetching via `thunks` is central to it all. **There's even a real API.**
 
-Lastly, the [***server/configureStore.js***](./server/configureStore.js) file is the absolute most important file of the demo. It essentially brings your ***routing-aware Redux store*** full circle by bringing it server-side in a dead simple yet flexible manner. It works in combination with [***src/routesMap.js***](./src/routesMap.js). Study those and your redux routing dreams have come true 😀
+Lastly, the [***server/configureStore.js***](sauce/universal/configureStore.js) file is the absolute most important file of the demo. It essentially brings your ***routing-aware Redux store*** full circle by bringing it server-side in a dead simple yet flexible manner. It works in combination with [***src/routeMap.js***](sauce/app/routeMap.js). Study those and your redux routing dreams have come true 😀
 
 > As a bonus, it comes with code-splitting thanks to [react-universal-component](https://github.com/faceyspacey/react-universal-component). This setup makes splitting stupid-easy. In the future, ***routing-aware pre-fetching*** will be added to the mix, so the users never know you're only serving partial parts of your app 🚀
 

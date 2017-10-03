@@ -1,6 +1,6 @@
 import createHistory from 'history/createMemoryHistory';
 import { NOT_FOUND } from 'redux-first-router';
-import configureStore from '../src/configureStore';
+import configureStore from '../app/configureStore';
 
 export default async (req, res) => {
     const jwToken = req.cookies.jwToken; // see server/index.jsx to change jwToken

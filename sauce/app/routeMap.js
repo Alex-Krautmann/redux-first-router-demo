@@ -1,16 +1,12 @@
 import { redirect, NOT_FOUND } from 'redux-first-router';
-import { fetchData } from './utils';
+import { fetchData } from '../services/index';
 
 export default {
     HOME: '/',
     LIST: {
         path: '/list/:category',
         thunk: async (dispatch, getState) => {
-            const {
-                jwToken,
-                location: { payload: { category } },
-                videosByCategory,
-            } = getState();
+            const { jwToken, location: { payload: { category } }, videosByCategory } = getState();
 
             if (videosByCategory[category]) return;
             const videos = await fetchData(`/api/videos/${category}`, jwToken);

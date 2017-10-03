@@ -1,4 +1,4 @@
-import routesMap from './routesMap';
+import routeMap from '../app/routeMap';
 // import jwt from 'jsonwebtoken'
 
 export const isServer = typeof window === 'undefined';
@@ -12,12 +12,10 @@ export const fetchData = async (path, jwToken) =>
     }).then(data => data.json());
 
 export const isAllowed = (type, state) => {
-    const role = routesMap[type] && routesMap[type].role; // you can put arbitrary keys in routes
+    const role = routeMap[type] && routeMap[type].role; // you can put arbitrary keys in routes
     if (!role) return true;
 
-    const user = isServer
-        ? jwt.verify(state.jwToken, process.env.JWT_SECRET)
-        : userFromState(state);
+    const user = isServer ? jwt.verify(state.jwToken, process.env.JWT_SECRET) : userFromState(state);
 
     if (!user) return false;
 

@@ -16,11 +16,7 @@ const UniversalComponent = universal(({ page }) => import(`./${page}`), {
 
 function Switcher({ page, direction, isLoading }) {
     return (
-        <TransitionGroup
-            className={`${styles.switcher} ${direction}`}
-            duration={500}
-            prefix="fade"
-        >
+        <TransitionGroup className={`${styles.switcher} ${direction}`} duration={500} prefix="fade">
             <Transition key={page}>
                 <UniversalComponent page={page} isLoading={isLoading} />
             </Transition>
@@ -28,10 +24,10 @@ function Switcher({ page, direction, isLoading }) {
     );
 }
 
-const mapState = ({ page, direction, ...state }) => ({
+const mapStateToProps = ({ page, direction, ...state }) => ({
     page,
     direction,
     isLoading: isLoading(state),
 });
 
-export default connect(mapState)(Switcher);
+export default connect(mapStateToProps)(Switcher);

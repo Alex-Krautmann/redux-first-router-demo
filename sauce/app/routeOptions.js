@@ -1,5 +1,5 @@
 import { redirect } from 'redux-first-router';
-import { isAllowed, isServer } from './utils';
+import { isAllowed, isServer } from '../services/index';
 
 export default {
     onBeforeChange: (dispatch, getState, action) => {

@@ -12,7 +12,7 @@ module.exports = {
     name: 'client',
     target: 'web',
     devtool: 'source-map',
-    entry: ['babel-polyfill', 'fetch-everywhere', path.resolve(__dirname, '../src/index.jsx')],
+    entry: ['babel-polyfill', 'fetch-everywhere', path.resolve(__dirname, '../sauce/app/index.jsx')],
     output: {
         filename: '[name].[chunkhash].js',
         chunkFilename: '[name].[chunkhash].js',
@@ -81,9 +81,7 @@ module.exports = {
             filename: '[name].[chunkhash].js',
             // put vendor modules listed in ./vendorModules.js into vendor.js
             minChunks: wpModule =>
-                vendorModules.some(
-                    vendorModule => wpModule.context && wpModule.context.includes(vendorModule),
-                ),
+                vendorModules.some(vendorModule => wpModule.context && wpModule.context.includes(vendorModule)),
         }),
         new webpack.DefinePlugin({
             'process.env': {

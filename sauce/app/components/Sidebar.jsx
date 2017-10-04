@@ -1,8 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { NavLink } from 'redux-first-router-link';
-import { goToPage } from '../actions';
-import styles from '../css/Sidebar.scss';
+import { goToPage } from '../state/page';
+import styles from '../../../src/css/Sidebar.scss';
 
 function Sidebar({ onClick, path }) {
     return (
@@ -17,52 +17,30 @@ function Sidebar({ onClick, path }) {
                 DB & GRAPHQL
             </NavLink>
 
-            <NavLink
-                activeClassName={styles.active}
-                to={['list', 'react-redux']}
-            >
+            <NavLink activeClassName={styles.active} to={['list', 'react-redux']}>
                 REACT & REDUX
             </NavLink>
 
-            <NavLink
-                activeClassName={styles.active}
-                to={{ type: 'LIST', payload: { category: 'fp' } }}
-            >
+            <NavLink activeClassName={styles.active} to={{ type: 'LIST', payload: { category: 'fp' } }}>
                 FP
             </NavLink>
 
             <div style={{ height: 20 }} />
             <h2>EVENT HANDLERS</h2>
 
-            <a
-                href=""
-                className={active(path, '/')}
-                onClick={() => onClick('HOME')}
-            >
+            <a href="" className={active(path, '/')} onClick={() => onClick('HOME')}>
                 HOME
             </a>
 
-            <a
-                href=""
-                className={active(path, '/list/db-graphql')}
-                onClick={() => onClick('LIST', 'db-graphql')}
-            >
+            <a href="" className={active(path, '/list/db-graphql')} onClick={() => onClick('LIST', 'db-graphql')}>
                 DB & GRAPHQL
             </a>
 
-            <a
-                href=""
-                className={active(path, '/list/react-redux')}
-                onClick={() => onClick('LIST', 'react-redux')}
-            >
+            <a href="" className={active(path, '/list/react-redux')} onClick={() => onClick('LIST', 'react-redux')}>
                 REACT & REDUX
             </a>
 
-            <a
-                href=""
-                className={active(path, '/list/fp')}
-                onClick={() => onClick('LIST', 'fp')}
-            >
+            <a href="" className={active(path, '/list/fp')} onClick={() => onClick('LIST', 'fp')}>
                 FP
             </a>
 
@@ -75,7 +53,7 @@ function Sidebar({ onClick, path }) {
     );
 }
 
-const active = (currentPath, path) => currentPath === path ? styles.active : '';
+const active = (currentPath, path) => (currentPath === path ? styles.active : '');
 
 const mapDispatch = { onClick: goToPage };
 const mapState = ({ location }) => ({ path: location.pathname });

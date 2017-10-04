@@ -29,9 +29,9 @@ yarn start
 
 *client code:*
 - [***src/configureStore.js***](sauce/app/configureStore.js) - *(nothing new here)*
-- [***src/components/Switcher.jsx***](src/components/Switcher.jsx) - *(universal component concept)*
+- [***src/components/Switcher.jsx***](sauce/app/components/Switcher.jsx) - *(universal component concept)*
 - [***src/components/UniversalComponent.js***](./src/components/UniversalComponent.js) - ***(universal component concept continued...)***
-- [***src/components/Sidebar.jsx***](src/components/Sidebar.jsx) - *(look at the different ways to link + dispatch URL-aware actions)*
+- [***src/components/Sidebar.jsx***](sauce/app/components/Sidebar.jsx) - *(look at the different ways to link + dispatch URL-aware actions)*
 - [***src/reducers/index.jsx***](./src/reducers/index.js) -  *(observe simplicity of the `page` reducer. Also be cognizant of non-route action types)*
 
 

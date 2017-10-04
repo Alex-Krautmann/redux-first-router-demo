@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import createHistory from 'history/createBrowserHistory';
 import AppContainer from 'react-hot-loader/lib/AppContainer';
-import App from '../../src/components/App';
+import App from './components/App';
 import configureStore from './configureStore';
 
 const history = createHistory();
@@ -25,8 +25,8 @@ function render(AppComponent) {
 render(App);
 
 if (module.hot && process.env.NODE_ENV === 'development') {
-    module.hot.accept('../../src/components/App', () => {
+    module.hot.accept('./components/App', () => {
         // eslint-disable-next-line global-require
-        render(require('../../src/components/App').default);
+        render(require('./components/App').default);
     });
 }

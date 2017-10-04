@@ -4,8 +4,10 @@ import { connectRoutes } from 'redux-first-router';
 
 import routesMap from './routeMap';
 import options from './routeOptions';
+// todo: make this smarter, right now we need to explictly import these files
 import * as reducers from '../../src/reducers/index';
-import * as actionCreators from '../../src/actions/index';
+// todo: make this smarter, right now we need to explictly import these files
+import * as actionCreators from './state/page';
 
 export default (history, preLoadedState) => {
     const { reducer, middleware, enhancer, thunk } = connectRoutes(history, routesMap, options);

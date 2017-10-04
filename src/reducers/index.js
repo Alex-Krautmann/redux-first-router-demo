@@ -1,4 +1,4 @@
-export { default as page } from './page';
+export { default as page } from '../../sauce/app/state/page';
 export { default as slug } from './slug';
 export { default as category } from './category';
 export { default as direction } from './direction';

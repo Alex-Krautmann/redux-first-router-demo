@@ -2,8 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import Link from 'redux-first-router-link';
 
-import styles from '../css/List.scss';
-import switcherStyles from '../css/Switcher.scss';
+import styles from './List.scss';
+import switcherStyles from '../../components/Switcher/Switcher.scss';
 
 const List = ({ videos }) =>
     (<div className={`${styles.list} ${switcherStyles.list}`}>

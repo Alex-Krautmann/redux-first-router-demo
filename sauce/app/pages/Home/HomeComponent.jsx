@@ -1,6 +1,6 @@
 import React from 'react';
-import styles from '../css/Home.scss';
-import switcherStyles from '../css/Switcher.scss';
+import styles from './Home.scss';
+import switcherStyles from '../../components/Switcher/Switcher.scss';
 
 export default function Home() {
     return (

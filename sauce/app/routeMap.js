@@ -1,6 +1,7 @@
 import { redirect, NOT_FOUND } from 'redux-first-router';
 import { fetchData } from '../services/index';
 
+// NOTE: if you add another route here, make sure to link the page component to the route in ./state/page.js
 export default {
     HOME: '/',
     LIST: {

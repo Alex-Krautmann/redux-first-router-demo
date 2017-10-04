@@ -1,8 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { NavLink } from 'redux-first-router-link';
-import { goToPage } from '../state/page';
-import styles from '../../../src/css/Sidebar.scss';
+import { goToPage } from '../../state/page';
+import styles from './Sidebar.scss';
 
 function Sidebar({ onClick, path }) {
     return (

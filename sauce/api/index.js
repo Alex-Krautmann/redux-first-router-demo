@@ -1,5 +1,5 @@
 export const findVideos = async (category, jwToken) => {
-    await fakeDelay(1000);
+    await fakeDelay(300);
     if (!jwToken) return []; // in a real app, you'd authenticate
 
     switch (category) {
@@ -15,7 +15,7 @@ export const findVideos = async (category, jwToken) => {
 };
 
 export const findVideo = async (slug, jwToken) => {
-    await fakeDelay(500);
+    await fakeDelay(100);
     if (!jwToken) return null; // TRY: set the cookie === ''
 
     return allVideos.find(video => video.slug === slug);

@@ -4,7 +4,7 @@ import { Provider } from 'react-redux';
 import { flushChunkNames } from 'react-universal-component/server';
 import flushChunks from 'webpack-flush-chunks';
 import configureStore from './configureStore';
-import App from '../app/components/App';
+import App from '../app/AppComponent';
 
 // vendorJs is needed because autodll-webpack-plugin is used in development
 // This speeds up webpack rebuilds by holding the vendor chunk in memory and not watching modules specified in entry.vendor

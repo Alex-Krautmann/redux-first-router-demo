@@ -15,7 +15,7 @@
         "build:server":
             "rimraf buildServer && cross-env NODE_ENV=production webpack --progress -p --config webpack/server.prod.js",
         "build:node":
-            "cross-env NODE_ENV=production babel sauce/index.js -o buildServer/index.js && babel server/api.js -o buildServer/api.js",
+            "cross-env NODE_ENV=production babel sauce/index.js -o buildServer/index.js && babel sauce/api/index.js -o buildServer/api.js",
         "clean": "rimraf buildClient buildServer",
         "precommit": "lint-staged --verbose",
         "cm": "git-cz",

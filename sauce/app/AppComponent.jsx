@@ -1,9 +1,9 @@
 import React from 'react';
 
-import Sidebar from './Sidebar';
-import Switcher from './Switcher';
+import Sidebar from './components/Sidebar';
+import Switcher from './components/Switcher';
 
-import styles from '../../../src/css/App.scss';
+import styles from './App.scss';
 
 export default function App() {
     return (

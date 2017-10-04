@@ -11,7 +11,7 @@ module.exports = {
     name: 'client',
     target: 'web',
     // devtool: 'source-map',
-    devtool: 'eval',
+    devtool: 'eval-source-map',
     entry: [
         'babel-polyfill',
         'fetch-everywhere',

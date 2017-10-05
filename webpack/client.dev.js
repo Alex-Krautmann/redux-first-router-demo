@@ -72,7 +72,7 @@ module.exports = {
         ],
     },
     resolve: {
-        extensions: ['.js', '.jsx', '.css'],
+        extensions: ['.js', '.jsx'],
     },
     plugins: [
         new WriteFilePlugin(), // used so you can see what chunks are produced in dev

@@ -66,7 +66,7 @@ module.exports = {
         ],
     },
     resolve: {
-        extensions: ['.js', '.jsx', '.css'],
+        extensions: ['.js', '.jsx'],
     },
     plugins: [
         // Need this plugin for deterministic hashing allows for vendor.js caching

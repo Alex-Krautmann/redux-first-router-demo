@@ -5,7 +5,7 @@ import { connectRoutes } from 'redux-first-router';
 import routesMap from './routeMap';
 import options from './routeOptions';
 // todo: make this smarter, right now we need to explictly import these files
-import * as reducers from '../../src/reducers/index';
+import * as reducers from './state';
 // todo: make this smarter, right now we need to explictly import these files
 import * as actionCreators from './state/page';
 
@@ -18,9 +18,9 @@ export default (history, preLoadedState) => {
     const store = createStore(rootReducer, preLoadedState, enhancers);
 
     if (module.hot && process.env.NODE_ENV === 'development') {
-        module.hot.accept('../../src/reducers/index', () => {
+        module.hot.accept('./state', () => {
             // eslint-disable-next-line global-require
-            const updatedReducers = require('../../src/reducers/index');
+            const updatedReducers = require('./state');
             const updatedRootReducer = combineReducers({
                 ...updatedReducers,
                 location: reducer,

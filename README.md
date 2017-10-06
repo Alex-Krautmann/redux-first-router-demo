@@ -32,7 +32,7 @@ yarn start
 - [***src/components/SwitcherComponent.jsx***](sauce/app/components/Switcher/SwitcherComponent.jsx) - *(universal component concept)*
 - [***src/components/UniversalComponent.js***](./src/components/UniversalComponent.js) - ***(universal component concept continued...)***
 - [***src/components/SidebarComponent.jsx***](sauce/app/components/Sidebar/SidebarComponent.jsx) - *(look at the different ways to link + dispatch URL-aware actions)*
-- [***src/reducers/index.jsx***](./src/reducers/index.js) -  *(observe simplicity of the `page` reducer. Also be cognizant of non-route action types)*
+- [***src/reducers/index.jsx***](sauce/app/state/index.js) -  *(observe simplicity of the `page` reducer. Also be cognizant of non-route action types)*
 
 
 *server code:*

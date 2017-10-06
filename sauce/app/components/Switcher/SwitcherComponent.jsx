@@ -5,7 +5,7 @@ import universal from 'react-universal-component';
 
 import Loading from '../Loading';
 import Error from '../Error';
-import isLoading from '../../../../src/selectors/isLoading';
+import isLoading from '../../state/isLoading';
 import styles from './Switcher.scss';
 
 const UniversalComponent = universal(({ page }) => import(`../../pages/${page}`), {

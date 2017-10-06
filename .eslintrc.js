@@ -3,18 +3,14 @@ module.exports = {
     parserOptions: {
         ecmaFeatures: {
             generators: true,
-            experimentalObjectRestSpread: true
+            experimentalObjectRestSpread: true,
         },
         sourceType: 'module',
-        allowImportExportEverywhere: false
+        allowImportExportEverywhere: false,
     },
-    plugins: ['flowtype'],
-    extends: ['airbnb', 'plugin:flowtype/recommended'],
-    settings: {
-        flowtype: {
-            onlyFilesWithFlowAnnotation: true
-        }
-    },
+    plugins: [],
+    extends: ['airbnb'],
+    settings: {},
     globals: {
         window: true,
         document: true,
@@ -22,14 +18,17 @@ module.exports = {
         __DEV__: true,
         CONFIG: true,
         process: true,
-        jest: true,
         describe: true,
         test: true,
         it: true,
         expect: true,
         beforeEach: true,
+        afterEach: true,
         fetch: true,
-        alert: true
+        alert: true,
+        shallow: true,
+        render: true,
+        mount: true,
     },
     rules: {
         'no-use-before-define': 'off',
@@ -41,57 +40,71 @@ module.exports = {
         // Prettier handles this anyway.
         'react/jsx-indent': 'off',
         'react/jsx-indent-props': ['error', 4],
-        'flowtype/no-weak-types': 'warn',
-        'flowtype/semi': ['error', 'never'],
         'spaced-comment': ['error', 'always', { markers: ['?'] }],
-        'no-unused-expressions': ['error', {
-            allowShortCircuit: true,
-            allowTernary: true,
-            allowTaggedTemplates: true
-        }],
-        'import/no-extraneous-dependencies': ['error', {
-            devDependencies: true,
-            optionalDependencies: true,
-            peerDependencies: true
-        }],
-        'max-len': ['error', {
-            code: 120,
-            tabWidth: 4,
-            ignoreUrls: true,
-            ignoreComments: true,
-            ignoreRegExpLiterals: true,
-            ignoreStrings: true,
-            ignoreTemplateLiterals: true
-        }],
-        'react/sort-comp': ['error', {
-            order: [
-                'propTypes',
-                'props',
-                'state',
-                'defaultProps',
-                'contextTypes',
-                'childContextTypes',
-                'getChildContext',
-                'static-methods',
-                'lifecycle',
-                'everything-else',
-                'render'
-            ]
-        }],
+        'no-unused-expressions': [
+            'error',
+            {
+                allowShortCircuit: true,
+                allowTernary: true,
+                allowTaggedTemplates: true,
+            },
+        ],
+        'import/no-extraneous-dependencies': [
+            'error',
+            {
+                devDependencies: true,
+                optionalDependencies: true,
+                peerDependencies: true,
+            },
+        ],
+        'max-len': [
+            'error',
+            {
+                code: 120,
+                tabWidth: 4,
+                ignoreUrls: true,
+                ignoreComments: true,
+                ignoreRegExpLiterals: true,
+                ignoreStrings: true,
+                ignoreTemplateLiterals: true,
+            },
+        ],
+        'react/sort-comp': [
+            'error',
+            {
+                order: [
+                    'propTypes',
+                    'props',
+                    'state',
+                    'defaultProps',
+                    'contextTypes',
+                    'childContextTypes',
+                    'getChildContext',
+                    'static-methods',
+                    'lifecycle',
+                    'everything-else',
+                    'render',
+                ],
+            },
+        ],
         // this option sets a specific tab width for your code
         // http://eslint.org/docs/rules/indent
-        'indent': ['error', 4, {
-            SwitchCase: 1,
-            VariableDeclarator: 1,
-            outerIIFEBody: 1,
-            FunctionDeclaration: {
-                parameters: 1,
-                body: 1
+        indent: [
+            'error',
+            4,
+            {
+                SwitchCase: 1,
+                VariableDeclarator: 1,
+                outerIIFEBody: 1,
+                FunctionDeclaration: {
+                    parameters: 1,
+                    body: 1,
+                },
+                FunctionExpression: {
+                    parameters: 1,
+                    body: 1,
+                },
             },
-            FunctionExpression: {
-                parameters: 1,
-                body: 1
-            }
-        }],
-    }
+        ],
+    },
 };

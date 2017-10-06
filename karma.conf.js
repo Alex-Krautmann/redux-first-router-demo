@@ -1,26 +1,20 @@
 // Karma configuration
 // Generated on Wed Oct 04 2017 16:55:41 GMT-0500 (CDT)
-
-module.exports = config => {
+module.exports = (config) => {
     config.set({
         // base path that will be used to resolve all patterns (eg. files, exclude)
         basePath: '',
 
         // frameworks to use
         // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
-        frameworks: ['mocha', 'chai'],
-
-        plugins: [
-            require('karma-webpack'),
-            require('karma-mocha'),
-            require('karma-chai'),
-            require('karma-mocha-reporter'),
-            require('karma-chrome-launcher'),
-            require('karma-sourcemap-loader'),
-        ],
+        frameworks: ['mocha'],
 
         // list of files / patterns to load in the browser
-        files: ['node_modules/babel-polyfill/browser.js', 'sauce/**/*.spec.{js,jsx}'],
+        files: [
+            { pattern: 'node_modules/babel-polyfill/browser.js', watched: false },
+            { pattern: 'sauce/spec.helper.js', watched: false },
+            { pattern: 'sauce/**/*.spec.+(js|jsx)', watched: false },
+        ],
 
         // list of files to exclude
         exclude: [],
@@ -28,7 +22,8 @@ module.exports = config => {
         // preprocess matching files before serving them to the browser
         // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
         preprocessors: {
-            'sauce/**/*.spec.{js,jsx}': ['webpack', 'sourcemap'],
+            'sauce/spec.helper.js': ['webpack', 'sourcemap'],
+            'sauce/**/*.spec.+(js|jsx)': ['webpack', 'sourcemap'],
         },
 
         // test results reporter to use
@@ -61,6 +56,7 @@ module.exports = config => {
         // how many browser should be started simultaneous
         concurrency: Infinity,
 
+        // eslint-disable-next-line global-require
         webpack: require('./webpack/test'),
 
         webpackServer: {

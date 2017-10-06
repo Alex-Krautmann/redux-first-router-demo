@@ -23,7 +23,7 @@ module.exports = {
     target: 'node',
     // devtool: 'source-map',
     devtool: 'eval-source-map',
-    entry: ['babel-polyfill', 'fetch-everywhere', res('../sauce/universal/render.jsx')],
+    entry: ['babel-polyfill', 'fetch-everywhere', res('../src/universal/render.jsx')],
     externals,
     output: {
         path: res('../buildServer'),

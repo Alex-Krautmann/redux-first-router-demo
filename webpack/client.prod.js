@@ -12,7 +12,7 @@ module.exports = {
     name: 'client',
     target: 'web',
     devtool: 'source-map',
-    entry: ['babel-polyfill', 'fetch-everywhere', path.resolve(__dirname, '../sauce/app/index.jsx')],
+    entry: ['babel-polyfill', 'fetch-everywhere', path.resolve(__dirname, '../src/app/index.jsx')],
     output: {
         filename: '[name].[chunkhash].js',
         chunkFilename: '[name].[chunkhash].js',

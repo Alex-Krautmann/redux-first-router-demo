@@ -24,21 +24,21 @@ yarn start
 ## Files You Should Look At:
 
 *universal code:*
-- [***src/routeMap.js***](sauce/app/routeMap.js) - *(observe thunks and `onBeforeChange`)*
-- [***src/index.js***](sauce/services/index.js) - *(check `isAllowed` function)*
+- [***src/routeMap.js***](src/app/routeMap.js) - *(observe thunks and `onBeforeChange`)*
+- [***src/index.js***](src/services/index.js) - *(check `isAllowed` function)*
 
 *client code:*
-- [***src/configureStore.js***](sauce/app/configureStore.js) - *(nothing new here)*
-- [***src/components/SwitcherComponent.jsx***](sauce/app/components/Switcher/SwitcherComponent.jsx) - *(universal component concept)*
+- [***src/configureStore.js***](src/app/configureStore.js) - *(nothing new here)*
+- [***src/components/SwitcherComponent.jsx***](src/app/components/Switcher/SwitcherComponent.jsx) - *(universal component concept)*
 - [***src/components/UniversalComponent.js***](./src/components/UniversalComponent.js) - ***(universal component concept continued...)***
-- [***src/components/SidebarComponent.jsx***](sauce/app/components/Sidebar/SidebarComponent.jsx) - *(look at the different ways to link + dispatch URL-aware actions)*
-- [***src/reducers/index.jsx***](sauce/app/state/index.js) -  *(observe simplicity of the `page` reducer. Also be cognizant of non-route action types)*
+- [***src/components/SidebarComponent.jsx***](src/app/components/Sidebar/SidebarComponent.jsx) - *(look at the different ways to link + dispatch URL-aware actions)*
+- [***src/reducers/index.jsx***](src/app/state/index.js) -  *(observe simplicity of the `page` reducer. Also be cognizant of non-route action types)*
 
 
 *server code:*
-- [***server/index.jsx***](sauce/index.js) - *(built-in ajax API + fake cookie handling)*
-- [***server/render.jsx***](sauce/universal/render.jsx) - *(super simple thanks to [webpack-flush-chunks](https://github.com/faceyspacey/webpack-flush-chunks))*
-- [***server/configureStore.js***](sauce/universal/configureStore.js) - ***(this is the gem of the repo -- observe how to filter authentication)***
+- [***server/index.jsx***](src/index.js) - *(built-in ajax API + fake cookie handling)*
+- [***server/render.jsx***](src/universal/render.jsx) - *(super simple thanks to [webpack-flush-chunks](https://github.com/faceyspacey/webpack-flush-chunks))*
+- [***server/configureStore.js***](src/universal/configureStore.js) - ***(this is the gem of the repo -- observe how to filter authentication)***
 
 ## Notes
 I comment throughout the code various things you can try. Look out for comments starting with *"TRY:"* and *"TASK:"*. 
@@ -47,7 +47,7 @@ For example, there are simple values like the `jwToken` you can toggle to get ac
 
 In general, this Demo is all about SSR. It shows how to use the `onBeforeChange` to properly authenticate user's and routes using *JSON Web Tokens*. And of course data-fetching via `thunks` is central to it all. **There's even a real API.**
 
-Lastly, the [***server/configureStore.js***](sauce/universal/configureStore.js) file is the absolute most important file of the demo. It essentially brings your ***routing-aware Redux store*** full circle by bringing it server-side in a dead simple yet flexible manner. It works in combination with [***src/routeMap.js***](sauce/app/routeMap.js). Study those and your redux routing dreams have come true 😀
+Lastly, the [***server/configureStore.js***](src/universal/configureStore.js) file is the absolute most important file of the demo. It essentially brings your ***routing-aware Redux store*** full circle by bringing it server-side in a dead simple yet flexible manner. It works in combination with [***src/routeMap.js***](src/app/routeMap.js). Study those and your redux routing dreams have come true 😀
 
 > As a bonus, it comes with code-splitting thanks to [react-universal-component](https://github.com/faceyspacey/react-universal-component). This setup makes splitting stupid-easy. In the future, ***routing-aware pre-fetching*** will be added to the mix, so the users never know you're only serving partial parts of your app 🚀
 

@@ -22,7 +22,7 @@ module.exports = {
     name: 'server',
     target: 'node',
     devtool: 'source-map',
-    entry: ['fetch-everywhere', res('../sauce/universal/render.jsx')],
+    entry: ['fetch-everywhere', res('../src/universal/render.jsx')],
     externals,
     output: {
         path: res('../buildServer'),

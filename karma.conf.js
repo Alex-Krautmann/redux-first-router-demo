@@ -12,8 +12,8 @@ module.exports = (config) => {
         // list of files / patterns to load in the browser
         files: [
             { pattern: 'node_modules/babel-polyfill/browser.js', watched: false },
-            { pattern: 'sauce/spec.helper.js', watched: false },
-            { pattern: 'sauce/**/*.spec.+(js|jsx)', watched: false },
+            { pattern: 'src/spec.helper.js', watched: false },
+            { pattern: 'src/**/*.spec.+(js|jsx)', watched: false },
         ],
 
         // list of files to exclude
@@ -22,8 +22,8 @@ module.exports = (config) => {
         // preprocess matching files before serving them to the browser
         // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
         preprocessors: {
-            'sauce/spec.helper.js': ['webpack', 'sourcemap'],
-            'sauce/**/*.spec.+(js|jsx)': ['webpack', 'sourcemap'],
+            'src/spec.helper.js': ['webpack', 'sourcemap'],
+            'src/**/*.spec.+(js|jsx)': ['webpack', 'sourcemap'],
         },
 
         // test results reporter to use

@@ -25,6 +25,8 @@ module.exports = {
             {
                 test: /\.scss$/,
                 use: [
+                    // TODO: is style-loader needed? CSS-loader might be enough for assertions,
+                    //       style loader might actually load CSS which is preferable.
                     {
                         loader: 'style-loader',
                     },

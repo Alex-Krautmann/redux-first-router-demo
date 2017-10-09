@@ -9,7 +9,7 @@ import isLoading from '../../state/isLoading';
 import styles from './Switcher.scss';
 
 const UniversalComponent = universal(({ page }) => import(`../../pages/${page}`), {
-    minDelay: 200,
+    // minDelay: 200,
     loading: Loading,
     error: Error,
 });

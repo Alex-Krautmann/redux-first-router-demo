@@ -1,5 +1,5 @@
-// Karma configuration
-// Generated on Wed Oct 04 2017 16:55:41 GMT-0500 (CDT)
+const isSingleRun = !!process.env.SINGLE_RUN;
+
 module.exports = (config) => {
     config.set({
         // base path that will be used to resolve all patterns (eg. files, exclude)
@@ -42,7 +42,7 @@ module.exports = (config) => {
         logLevel: config.LOG_INFO,
 
         // enable / disable watching file and executing tests whenever any file changes
-        autoWatch: true,
+        autoWatch: !isSingleRun,
 
         // start these browsers
         // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
@@ -50,7 +50,7 @@ module.exports = (config) => {
 
         // Continuous Integration mode
         // if true, Karma captures browsers, runs the tests and exits
-        singleRun: false,
+        singleRun: isSingleRun,
 
         // Concurrency level
         // how many browser should be started simultaneous

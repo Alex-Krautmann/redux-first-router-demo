@@ -12,12 +12,7 @@ const res = p => path.resolve(__dirname, p);
 // within Webpack and can properly make connections to client modules:
 const externals = fs
     .readdirSync(res('../node_modules'))
-    .filter(
-        x =>
-            !/\.bin|react-universal-component|require-universal-module|webpack-flush-chunks/.test(
-                x,
-            ),
-    )
+    .filter(x => !/\.bin|react-universal-component|require-universal-module|webpack-flush-chunks/.test(x))
     .reduce((externalsAcc, mod) => {
         externalsAcc[mod] = `commonjs ${mod}`;
         return externalsAcc;
@@ -27,8 +22,8 @@ module.exports = {
     name: 'server',
     target: 'node',
     // devtool: 'source-map',
-    devtool: 'eval',
-    entry: ['babel-polyfill', 'fetch-everywhere', res('../server/render.jsx')],
+    devtool: 'eval-source-map',
+    entry: ['babel-polyfill', 'fetch-everywhere', res('../src/universal/render.jsx')],
     externals,
     output: {
         path: res('../buildServer'),
@@ -82,7 +77,7 @@ module.exports = {
         ],
     },
     resolve: {
-        extensions: ['.js', '.jsx', '.css'],
+        extensions: ['.js', '.jsx'],
     },
     plugins: [
         new webpack.optimize.LimitChunkCountPlugin({

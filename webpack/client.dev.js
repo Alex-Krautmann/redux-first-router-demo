@@ -11,13 +11,13 @@ module.exports = {
     name: 'client',
     target: 'web',
     // devtool: 'source-map',
-    devtool: 'eval',
+    devtool: 'eval-source-map',
     entry: [
         'babel-polyfill',
         'fetch-everywhere',
         'webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000&reload=false&quiet=false&noInfo=false',
         'react-hot-loader/patch',
-        path.resolve(__dirname, '../src/index.jsx'),
+        path.resolve(__dirname, '../src/app/index.jsx'),
     ],
     output: {
         filename: '[name].js',
@@ -72,7 +72,7 @@ module.exports = {
         ],
     },
     resolve: {
-        extensions: ['.js', '.jsx', '.css'],
+        extensions: ['.js', '.jsx'],
     },
     plugins: [
         new WriteFilePlugin(), // used so you can see what chunks are produced in dev

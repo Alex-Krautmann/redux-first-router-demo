@@ -12,7 +12,7 @@ module.exports = {
     name: 'client',
     target: 'web',
     devtool: 'source-map',
-    entry: ['babel-polyfill', 'fetch-everywhere', path.resolve(__dirname, '../src/index.jsx')],
+    entry: ['babel-polyfill', 'fetch-everywhere', path.resolve(__dirname, '../src/app/index.jsx')],
     output: {
         filename: '[name].[chunkhash].js',
         chunkFilename: '[name].[chunkhash].js',
@@ -66,7 +66,7 @@ module.exports = {
         ],
     },
     resolve: {
-        extensions: ['.js', '.jsx', '.css'],
+        extensions: ['.js', '.jsx'],
     },
     plugins: [
         // Need this plugin for deterministic hashing allows for vendor.js caching
@@ -81,9 +81,7 @@ module.exports = {
             filename: '[name].[chunkhash].js',
             // put vendor modules listed in ./vendorModules.js into vendor.js
             minChunks: wpModule =>
-                vendorModules.some(
-                    vendorModule => wpModule.context && wpModule.context.includes(vendorModule),
-                ),
+                vendorModules.some(vendorModule => wpModule.context && wpModule.context.includes(vendorModule)),
         }),
         new webpack.DefinePlugin({
             'process.env': {

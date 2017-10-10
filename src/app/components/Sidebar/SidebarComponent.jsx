@@ -28,21 +28,45 @@ function Sidebar({ onClick, path }) {
             <div style={{ height: 20 }} />
             <h2>EVENT HANDLERS</h2>
 
-            <a href="" className={active(path, '/')} onClick={() => onClick('HOME')}>
+            <span
+                className={isActive(path, '/')}
+                onClick={() => onClick('HOME')}
+                onKeyUp={() => onClick('HOME')}
+                role="link"
+                tabIndex="0"
+            >
                 HOME
-            </a>
+            </span>
 
-            <a href="" className={active(path, '/list/db-graphql')} onClick={() => onClick('LIST', 'db-graphql')}>
+            <span
+                className={isActive(path, '/list/db-graphql')}
+                onClick={() => onClick('LIST', 'db-graphql')}
+                onKeyUp={() => onClick('LIST', 'db-graphql')}
+                role="link"
+                tabIndex="0"
+            >
                 DB & GRAPHQL
-            </a>
+            </span>
 
-            <a href="" className={active(path, '/list/react-redux')} onClick={() => onClick('LIST', 'react-redux')}>
+            <span
+                className={isActive(path, '/list/react-redux')}
+                onClick={() => onClick('LIST', 'react-redux')}
+                onKeyUp={() => onClick('LIST', 'react-redux')}
+                role="link"
+                tabIndex="0"
+            >
                 REACT & REDUX
-            </a>
+            </span>
 
-            <a href="" className={active(path, '/list/fp')} onClick={() => onClick('LIST', 'fp')}>
+            <span
+                className={isActive(path, '/list/fp')}
+                onClick={() => onClick('LIST', 'fp')}
+                onKeyUp={() => onClick('LIST', 'fp')}
+                role="link"
+                tabIndex="0"
+            >
                 FP
-            </a>
+            </span>
 
             <div style={{ height: 14 }} />
 
@@ -53,9 +77,18 @@ function Sidebar({ onClick, path }) {
     );
 }
 
-const active = (currentPath, path) => (currentPath === path ? styles.active : '');
+function isActive(currentPath, path) {
+    return currentPath === path ? styles.active : '';
+}
 
-const mapDispatch = { onClick: goToPage };
-const mapState = ({ location }) => ({ path: location.pathname });
+const mapDispatchToProps = {
+    onClick: goToPage,
+};
 
-export default connect(mapState, mapDispatch)(Sidebar);
+function mapStateToProps({ location }) {
+    return {
+        path: location.pathname,
+    };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Sidebar);

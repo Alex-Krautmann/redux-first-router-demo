@@ -35,11 +35,17 @@ module.exports = {
         'no-param-reassign': 'off',
         'react/prop-types': 'off',
         'react/no-render-return-value': 'off',
-        'no-confusing-arrow': 'off',
         // react/jsx-indent is turned off, it has a bug that where it messes up code indentation on --fix.
         // Prettier handles this anyway.
         'react/jsx-indent': 'off',
         'react/jsx-indent-props': ['error', 4],
+        'jsx-a11y/anchor-is-valid': [
+            'error',
+            {
+                components: ['Link'],
+                specialLink: ['to'],
+            },
+        ],
         'spaced-comment': ['error', 'always', { markers: ['?'] }],
         'no-unused-expressions': [
             'error',

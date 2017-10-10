@@ -5,7 +5,7 @@ import universal from 'react-universal-component';
 
 import Loading from '../Loading';
 import Error from '../Error';
-import isLoading from '../../state/isLoading';
+import isLoadingSelector from '../../state/isLoading';
 import styles from './Switcher.scss';
 
 const UniversalComponent = universal(({ page }) => import(`../../pages/${page}`), {
@@ -24,10 +24,12 @@ function Switcher({ page, direction, isLoading }) {
     );
 }
 
-const mapStateToProps = ({ page, direction, ...state }) => ({
-    page,
-    direction,
-    isLoading: isLoading(state),
-});
+function mapStateToProps({ page, direction, ...state }) {
+    return {
+        page,
+        direction,
+        isLoading: isLoadingSelector(state),
+    };
+}
 
 export default connect(mapStateToProps)(Switcher);

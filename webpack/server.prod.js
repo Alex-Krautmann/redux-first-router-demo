@@ -72,6 +72,19 @@ module.exports = {
                     },
                 ],
             },
+            {
+                test: /\.(png|jpg|gif)$/,
+                use: [
+                    {
+                        loader: 'file-loader',
+                        options: {
+                            // no reason to emit file on the server since we serve static from buildClient
+                            emitFile: false,
+                            publicPath: '/static/',
+                        },
+                    },
+                ],
+            },
         ],
     },
     resolve: {
